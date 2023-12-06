@@ -96,7 +96,7 @@ function combi() {
 
   let answer = factorial(n) / (factorial(r) * factorial(n - r));
 
-  ans.innerHTML = answer;
+  ans.innerHTML = Math.floor(answer);
 }
 function fib() {
   let n = document.getElementById("fib").value;
