@@ -173,6 +173,7 @@ body {
   .calc_div {
     flex-direction: column;
     justify-content: space-around;
+    min-height: 700px;
   }
   .calc_card {
     padding: 5px;
