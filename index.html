@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="selected_view">Permutation and Combination</h1>
+      <h1 onclick="location.href='sequences.html';">Sequences</h1>
+      <h1 onclick="location.href='sets.html';">Sets</h1>
+    </div>
+    <div class="under_header"></div>
+    <div class="under_header_2"></div>
+    <div class="calc_div">
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="perm_1" />
+        </div>
+        <div class="input">
+          r
+          <input type="text" id="perm_2" />
+        </div>
+        <button type="button" class="calculate_button" onclick="perm()">
+          Calculate
+        </button>
+        <h1 id="return_ans_perm" class="return_ans"></h1>
+      </div>
+      <div class="description">
+        <h1>Permutation</h1>
+        <p class="formula">
+          <math display="inline">
+            <mfrac>
+              <msup> <mn>n!</mn> </msup>
+              <mn>(n - r)!</mn>
+            </mfrac>
+          </math>
+        </p>
+        <p class="legend">
+          n = number of objects<br />
+          r = objects selected<br />
+        </p>
+        <p class="definition">
+          A permutation is the number of ways a particular data set or sample
+          can be arranged
+        </p>
+        <h2></h2>
+      </div>
+    </div>
+    <div class="calc_div">
+      <div class="description">
+        <h1>Circular Permutation</h1>
+        <p class="formula">
+          <math display="inline">
+            <mn>(n - 1)!</mn>
+          </math>
+        </p>
+        <p class="legend">n = number of objects<br /></p>
+        <p class="definition">
+          A permutation which forms a circle, the permutation of n objects at a
+          time is given by the factorial of n - 1.
+        </p>
+        <h2></h2>
+      </div>
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="circ_perm" />
+        </div>
+        <button type="button" class="calculate_button" onclick="circ_perm()">
+          Calculate
+        </button>
+        <h1 id="return_ans_circ_perm" class="return_ans"></h1>
+      </div>
+    </div>
+    <div class="calc_div">
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="combi_1" />
+        </div>
+        <div class="input">
+          r
+          <input type="text" id="combi_2" />
+        </div>
+        <button type="button" class="calculate_button" onclick="combi()">
+          Calculate
+        </button>
+        <h1 id="return_ans_combi" class="return_ans"></h1>
+      </div>
+      <div class="description">
+        <h1>Combination</h1>
+        <p class="formula">
+          <math display="inline">
+            <mfrac>
+              <msup> <mn>n!</mn> </msup>
+              <mn>r!(n - r)!</mn>
+            </mfrac>
+          </math>
+        </p>
+        <p class="legend">
+          n = number of objects<br />
+          r = objects selected<br />
+        </p>
+        <p class="definition">
+          The number of possible arrangements in a collection of items where the
+          order does not matter
+        </p>
+        <h2></h2>
+      </div>
+    </div>
+  </body>
+</html>

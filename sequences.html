@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1 onclick="location.href='index.html';">Permutation and Combination</h1>
+      <h1 class="selected_view" onclick="location.href='sequences.html';">
+        Sequences
+      </h1>
+      <h1 onclick="location.href='sets.html';">Sets</h1>
+    </div>
+    <div class="under_header"></div>
+    <div class="under_header_2"></div>
+    <div class="calc_div">
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="fib" />
+        </div>
+        <button type="button" class="calculate_button" onclick="fib()">
+          Calculate
+        </button>
+        <h1 id="return_ans_fib" class="return_ans"></h1>
+      </div>
+      <div class="description">
+        <h1>Fibonacci</h1>
+        <p class="formula">
+          <math display="inline">
+            <mfrac>
+              <mrow>
+                <mi>(1+</mi><msqrt><mn>5</mn></msqrt
+                ><msup><mi>)</mi><mi>n</mi></msup
+                ><mo>-</mo><mi>(1-</mi><msqrt><mn>5</mn></msqrt
+                ><msup><mi>)</mi><mi>n</mi></msup>
+              </mrow>
+              <mrow>
+                <msup><mn>2</mn><mi>n</mi></msup
+                ><msqrt><mn>5</mn></msqrt>
+              </mrow>
+            </mfrac>
+          </math>
+        </p>
+        <p class="legend">n = nth Fibonacci<br /></p>
+        <p class="definition">
+          Fibonacci sequence is a sequence in which each number is the sum of
+          the two preceding ones. The first two numbers are 0 and 1.
+        </p>
+        <h2></h2>
+      </div>
+    </div>
+    <div class="calc_div">
+      <div class="description">
+        <h1>Lucas Number</h1>
+        <p class="formula">
+          <math display="inline">
+            <msup>
+              <mrow>
+                <mo>(</mo>
+                <mfrac>
+                  <mrow
+                    ><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt>
+                  </mrow>
+                  <mrow><mn>2</mn></mrow>
+                </mfrac>
+                <mo>)</mo>
+              </mrow>
+              <mi>n</mi>
+            </msup>
+            <mo>+</mo>
+            <msup>
+              <mrow>
+                <mo>(</mo>
+                <mfrac>
+                  <mrow
+                    ><mn>1</mn><mo>-</mo><msqrt><mn>5</mn></msqrt>
+                  </mrow>
+                  <mrow><mn>2</mn></mrow>
+                </mfrac>
+                <mo>)</mo>
+              </mrow>
+              <mi>n</mi>
+            </msup>
+          </math>
+        </p>
+        <p class="legend">n = nth Lucas<br /></p>
+        <p class="definition">
+          Lucas number is defined to be the sum of its two immediately previous
+          terms. The first two numbers are 2 and 1.
+        </p>
+        <h2></h2>
+      </div>
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="lucas" />
+        </div>
+        <button type="button" class="calculate_button" onclick="lucas()">
+          Calculate
+        </button>
+        <h1 id="return_ans_lucas" class="return_ans"></h1>
+      </div>
+    </div>
+    <div class="calc_div">
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="colatz" />
+        </div>
+        <button type="button" class="calculate_button" onclick="colatz()">
+          Calculate
+        </button>
+        <h1 id="return_ans_colatz" class="return_ans colatz_ans"></h1>
+      </div>
+      <div class="description">
+        <h1>Collatz</h1>
+        <p class="formula">
+          <math display="inline">
+            <mrow>
+              <mi>3C(n)+1, if C(n) is ODD</mi>
+            </mrow>
+          </math>
+          <br />
+          <math>
+            <mrow>
+              <mi>C(n)/2</mi>
+              <mi>, if C(n) is EVEN</mi>
+            </mrow>
+          </math>
+        </p>
+        <p class="definition">
+          It concerns sequences of integers in which each term is obtained from
+          the previous term as follows: if the previous term is even, the next
+          term is one half of the previous term. If the previous term is odd,
+          the next term is 3 times the previous term plus 1.
+        </p>
+        <h2></h2>
+      </div>
+    </div>
+    <div class="calc_div">
+      <div class="description">
+        <h1>Tribonacci Sequence</h1>
+        <p class="formula">
+          <math display="inline"
+            ><msub><mi>T</mi><mi>n</mi></msub
+            ><mo>=</mo><msub><mi>T</mi><mi>n-1</mi></msub
+            ><mo>+</mo><msub><mi>T</mi><mi>n-2</mi></msub
+            ><mo>+</mo><msub><mi>T</mi><mi>n-3</mi></msub></math
+          >
+        </p>
+        <p class="legend"><br /></p>
+        <p class="definition">
+          The tribonacci sequence is a generalization of the Fibonacci sequence
+          where each term is the sum of the three preceding terms. The first
+          three numbers are 0, 0, and 1;
+        </p>
+        <h2></h2>
+      </div>
+      <div class="calc_card">
+        <div class="input">
+          n
+          <input type="text" id="trib" />
+        </div>
+        <button type="button" class="calculate_button" onclick="trib()">
+          Calculate
+        </button>
+        <h1 id="return_ans_trib" class="return_ans"></h1>
+      </div>
+    </div>
+  </body>
+</html>
