@@ -169,3 +169,30 @@ body {
 #return_ans_sets {
   font-size: 20px;
 }
+@media screen and (max-width: 800px) {
+  .calc_div {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .calc_card {
+    padding: 5px;
+    width: 100%;
+  }
+  .input {
+    border: 1px solid black;
+  }
+  .description {
+    width: 100%;
+  }
+  .sets_dec {
+    width: 100%;
+  }
+  .formula {
+    font-size: 25px;
+  }
+  .return_ans {
+    height: 50px;
+    width: 90%;
+    font-size: 20px;
+  }
+}
