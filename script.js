@@ -94,7 +94,7 @@ function combi() {
     return;
   }
 
-  let answer = factorial(n) / (factorial(r) * factorial(n - r));
+  let answer = Math.floor(factorial(n) / (factorial(r) * factorial(n - r)));
 
   ans.innerHTML = Math.floor(answer);
 }
