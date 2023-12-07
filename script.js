@@ -116,11 +116,25 @@ function fib() {
     return;
   }
 
-  let answer =
-    ((1 + Math.sqrt(5)) ** n - (1 - Math.sqrt(5)) ** n) /
-    (2 ** n * Math.sqrt(5));
+  n = BigInt(n);
+  if (n === 0n) {
+    ans.innerHTML = "0";
+    return;
+  } else if (n === 1n) {
+    ans.innerHTML = "1";
+    return;
+  }
 
-  ans.innerHTML = parseInt(answer);
+  let a = 0n,
+    buffer;
+  let answer = 1n;
+  for (let i = 1n; i < n; i++) {
+    buffer = a + answer;
+    a = answer;
+    answer = buffer;
+  }
+
+  ans.innerHTML = answer.toString();
 }
 function lucas() {
   let n = document.getElementById("lucas").value;
@@ -140,9 +154,25 @@ function lucas() {
     return;
   }
 
-  let answer = ((1 + Math.sqrt(5)) / 2) ** n + ((1 - Math.sqrt(5)) / 2) ** n;
+  n = BigInt(n);
+  if (n === 0n) {
+    ans.innerHTML = "2";
+    return;
+  } else if (n === 1n) {
+    ans.innerHTML = "1";
+    return;
+  }
 
-  ans.innerHTML = parseInt(answer);
+  let a = 2n,
+    buffer;
+  let answer = 1n;
+  for (let i = 1n; i < n; i++) {
+    buffer = a + answer;
+    a = answer;
+    answer = buffer;
+  }
+
+  ans.innerHTML = answer.toString();
 }
 function collatz_form(n) {
   const collatz_sequence = [];
@@ -189,6 +219,7 @@ function trib_form(n) {
   let n_2 = 0;
   let nth = 1;
   let nth_buf, n_1_buf;
+  let x;
   if (n == 0) {
     return 0;
   } else if (n == 1) {
@@ -225,9 +256,18 @@ function trib() {
     return;
   }
 
-  let answer = trib_form(n);
+  let a = 0n,
+    b = 0n,
+    buffer;
+  let answer = 1n;
+  for (let i = 2; i < n; i++) {
+    buffer = answer + a + b;
+    b = a;
+    a = answer;
+    answer = buffer;
+  }
 
-  ans.innerHTML = answer;
+  ans.innerHTML = answer.toString();
 }
 function union(A, B) {
   A = A.replace(/\s/g, "");
