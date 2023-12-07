@@ -11,7 +11,7 @@ function factorial(n) {
     n *= x;
   }
 
-  return n;
+  return Math.floor(n);
 }
 function perm() {
   let n = document.getElementById("perm_1").value;
@@ -38,7 +38,7 @@ function perm() {
   if (r < 0) {
     ans.innerHTML = "r must be greater than 0";
     return;
-  } else if (n < r) {
+  } else if (parseInt(n) < parseInt(r)) {
     ans.innerHTML = "n must be equal or greater than r";
     return;
   }
@@ -94,7 +94,7 @@ function combi() {
     return;
   }
 
-  let answer = Math.floor(factorial(n) / (factorial(r) * factorial(n - r)));
+  let answer = factorial(n) / (factorial(r) * factorial(n - r));
 
   ans.innerHTML = Math.floor(answer);
 }
