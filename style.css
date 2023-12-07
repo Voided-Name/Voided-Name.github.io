@@ -74,6 +74,7 @@ body {
 }
 .calc_card {
   width: 30%;
+  overflow-y: auto;
   background-color: #1b272dc4;
   backdrop-filter: blur(4px);
   height: 100%;
@@ -151,6 +152,18 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   overflow-wrap: break-word;
+}
+#return_ans_fib {
+  height: 250px;
+}
+#return_ans_lucas {
+  height: 250px;
+}
+#return_ans_collatz {
+  height: 250px;
+}
+#return_ans_trib {
+  height: 250px;
 }
 .colatz_ans {
   height: 40%;
