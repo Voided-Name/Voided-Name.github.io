@@ -89,7 +89,7 @@ function combi() {
   if (r < 0) {
     ans.innerHTML = "r must be greater than 0";
     return;
-  } else if (n < r) {
+  } else if (parseInt(n) < parseInt(r)) {
     ans.innerHTML = "n must be equal or greater than r";
     return;
   }
