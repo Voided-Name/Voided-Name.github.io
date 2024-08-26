@@ -151,6 +151,7 @@
         peers. Deepen your understanding in the fundamentals of code magic and
         algorithmic runes. Study with us through tutorials, explore your ideas
         through pitching contests, and challenge yourself through hackathons.</p>
+      <btn class="btn btn-dark" onclick="joinBtn()">Join Us</btn>
       <div class="inner-container container mt-5">
         <div class="p-3">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -388,6 +389,10 @@
     }
     let el = document.getElementById('sortable-list');
     let sortable = Sortable.create(el);
+
+    function joinBtn() {
+      window.location.href = 'https://forms.gle/mpujYyWuUM29KxRaA';
+    }
   </script>
 </body>
 
