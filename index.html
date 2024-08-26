@@ -11,6 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+    integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0;
@@ -19,9 +21,18 @@
       color: #FFF5EA;
     }
 
+    .autoText {
+      white-space: pre;
+    }
+
     @font-face {
       font-family: pirataOne;
       src: url(fonts/PirataOne-Regular.ttf);
+    }
+
+    @font-face {
+      font-family: bangus;
+      src: url(fonts/SurabanglusNormal-16dv.ttf);
     }
 
     body {
@@ -44,8 +55,29 @@
 
     .inner-container {
       height: 50vh;
-      background: rgba(0, 0, 0, 0.3)
-        /* Green background with 30% opacity */
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      /* Green background with 30% opacity */
+    }
+
+    .nav-link.active {
+      background-color: #AE6F27 !important;
+    }
+
+    .nav-link {
+      color: #FEEBBE !important;
+    }
+
+    .tabTitle {
+      font-family: bangus;
+      font-size: 40px;
+    }
+
+    .codeBlock {
+      background-color: black;
+      color: green !important;
+      border-radius: 10px;
+      font-family: 'Courier New', Courier, monospace;
     }
   </style>
 </head>
@@ -64,19 +96,23 @@
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">00</button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">01</button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">02</button>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <h1 class="tabTitle">Deepen Your Fundamentals</h1>
+              <div class="codeBlock">
+                <p class="autoText text-start p-3 text-success"></p>
+              </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
@@ -86,6 +122,27 @@
         </div>
   </main>
 
+  <script>
+    var txt = '#include <iostream><br> #include <cstdlib><br> <br> using namespace std;<br> <br> int main() {<br>     cout << "Hello, World!"; <br><br>     return 0;'.split(''),
+      $p = $('.autoText'),
+      len = txt.length,
+      delay = 20,
+      i = 0;
+
+    setInterval(function () {
+      if (txt[i] === '<' && txt[i + 1] === 'b') { // Check if it's the start of a <br> tag
+        $p.append('<br>'); // Append a line break
+        i += 4; // Skip the rest of the '<br>' tag
+      } else {
+        $p.append(txt[i]);
+      }
+      i++;
+      if (i > len) {
+        $p.empty();
+        i = 0;
+      }
+    }, delay);
+  </script>
 </body>
 
 </html>
