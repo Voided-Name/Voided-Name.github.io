@@ -13,6 +13,8 @@
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
     integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"
+    integrity="sha256-ymhDBwPE9ZYOkHNYZ8bpTSm1o943EH2BAOWjAQB+nm4=" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0;
@@ -54,10 +56,9 @@
     }
 
     .inner-container {
-      height: 50vh;
+      min-height: 50vh;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 20px;
-      /* Green background with 30% opacity */
     }
 
     .nav-link.active {
@@ -73,11 +74,69 @@
       font-size: 40px;
     }
 
+    .tabTitle2 {
+      font-family: pirataOne;
+      font-size: 20px;
+    }
+
     .codeBlock {
       background-color: black;
       color: green !important;
       border-radius: 10px;
       font-family: 'Courier New', Courier, monospace;
+    }
+
+    #sortable-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #sortable-list li {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+      margin-bottom: 5px;
+      cursor: grab;
+    }
+
+    #li1 {
+      width: 10%;
+    }
+
+    #li2 {
+      width: 20%;
+    }
+
+    #li3 {
+      width: 30%;
+    }
+
+    #li4 {
+      width: 40%;
+    }
+
+    #li5 {
+      width: 50%;
+    }
+
+    #li6 {
+      width: 60%;
+    }
+
+    #li7 {
+      width: 70%;
+    }
+
+    #li8 {
+      width: 80%;
+    }
+
+    #li9 {
+      width: 90%;
+    }
+
+    #li10 {
+      width: 100%;
     }
   </style>
 </head>
@@ -87,10 +146,11 @@
     <div class="container text-center">
       <h1 class="title mt-5">The Code Wizards
         Society of NEUST</h1>
+      <img src="img/sandWizard.png" style="height: 100px"></img>
       <p class="info-par">A place to cultivate your programming spell-books with likeminded
         peers. Deepen your understanding in the fundamentals of code magic and
         algorithmic runes. Study with us through tutorials, explore your ideas
-        through pitching contests, and challenge yourself through hackathons</p>
+        through pitching contests, and challenge yourself through hackathons.</p>
       <div class="inner-container container mt-5">
         <div class="p-3">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -110,29 +170,53 @@
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <h1 class="tabTitle">Deepen Your Fundamentals</h1>
+              <h1 class="tabTitle2">"Understanding Magic"</h1>
               <div class="codeBlock">
                 <p class="autoText text-start p-3 text-success"></p>
               </div>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-          </div>
-          <div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+              <h1 class="tabTitle">Study Algorithms</h1>
+              <h1 class="tabTitle2">"Collect Spells"</h1>
+              <ul id="sortable-list">
+                <li id="li1" value=10>10</li>
+                <li id="li2" value=20>20</li>
+                <li id="li3" value=30>30</li>
+                <li id="li4" value=40>40</li>
+                <li id="li5" value=50>50</li>
+                <li id="li6" value=60>60</li>
+                <li id="li7" value=70>70</li>
+                <li id="li8" value=80>80</li>
+                <li id="li9" value=90>90</li>
+                <li id="li10" value=100>100</li>
+              </ul>
+              <button id="bubbleSortBtn" type="button" class="btn btn-light" onclick="bubbleSort()">Bubble Sort</button>
+              <button id="selectionSortBtn" type="button" class="btn btn-light" onclick="selectionSort()">Selection
+                Sort</button>
+              <button id="quickSortBtn" type="button" class="btn btn-light" onclick="quickSort()">Quick
+                Sort</button>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+              <h1 class="tabTitle">Join the Hunt</h1>
+              <h1 class="tabTitle2">"First clue for the first dungeon!"</h1>
+              <h1 class="tabTitle2">"First clue for the first dungeon!"</h1>
+            </div>
           </div>
         </div>
+      </div>
   </main>
 
   <script>
-    var txt = '#include <iostream><br> #include <cstdlib><br> <br> using namespace std;<br> <br> int main() {<br>     cout << "Hello, World!"; <br><br>     return 0;'.split(''),
+    let txt = '#include <iostream><br> #include <cstdlib><br> <br> using namespace std;<br> <br> int main() {<br>     cout << "Hello, World!"; <br> <br>     return 0; <br> }'.split(''),
       $p = $('.autoText'),
       len = txt.length,
       delay = 20,
       i = 0;
 
     setInterval(function () {
-      if (txt[i] === '<' && txt[i + 1] === 'b') { // Check if it's the start of a <br> tag
-        $p.append('<br>'); // Append a line break
-        i += 4; // Skip the rest of the '<br>' tag
+      if (txt[i] === '<' && txt[i + 1] === 'b') {
+        $p.append('<br>');
+        i += 4;
       } else {
         $p.append(txt[i]);
       }
@@ -142,6 +226,166 @@
         i = 0;
       }
     }, delay);
+
+    function selectionSort() {
+      let list = document.getElementById('sortable-list');
+      let items = Array.from(list.getElementsByTagName('li'));
+      let length = items.length;
+
+      function swapItems(index1, index2) {
+        let temp = items[index1].outerHTML;
+        items[index1].outerHTML = items[index2].outerHTML;
+        items[index2].outerHTML = temp;
+        items = Array.from(list.getElementsByTagName('li'));
+      }
+
+      function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function sort() {
+        document.getElementById("selectionSortBtn").disabled = true;
+        document.getElementById("bubbleSortBtn").disabled = true;
+        document.getElementById("quickSortBtn").disabled = true;
+
+        for (let i = 0; i < length - 1; i++) {
+          let minIndex = i;
+          items[minIndex].style.backgroundColor = 'black';
+
+          for (let j = i + 1; j < length; j++) {
+            items[j].style.backgroundColor = 'navy';
+            await delay(200);
+
+            if (parseInt(items[j].getAttribute('value')) < parseInt(items[minIndex].getAttribute('value'))) {
+              items[minIndex].style.backgroundColor = '';
+              minIndex = j;
+              items[minIndex].style.backgroundColor = 'navy';
+            } else {
+              items[j].style.backgroundColor = '';
+            }
+          }
+
+          if (minIndex !== i) {
+            swapItems(i, minIndex);
+            await delay(200);
+          }
+
+          items[i].style.backgroundColor = '';
+        }
+
+        document.getElementById("selectionSortBtn").disabled = false;
+        document.getElementById("bubbleSortBtn").disabled = false;
+        document.getElementById("quickSortBtn").disabled = false;
+      }
+
+      sort();
+
+    }
+
+
+    function bubbleSort() {
+      let list = document.getElementById('sortable-list');
+      let items = Array.from(list.getElementsByTagName('li'));
+      let length = items.length;
+
+      function swapItems(index1, index2) {
+        let temp = items[index1].outerHTML;
+        items[index1].outerHTML = items[index2].outerHTML;
+        items[index2].outerHTML = temp;
+        items = Array.from(list.getElementsByTagName('li'));
+      }
+
+      function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function sort() {
+        document.getElementById("selectionSortBtn").disabled = true;
+        document.getElementById("bubbleSortBtn").disabled = true;
+        document.getElementById("quickSortBtn").disabled = true;
+
+        for (let i = 0; i < length - 1; i++) {
+          for (let j = 0; j < length - i - 1; j++) {
+            items[j].style.backgroundColor = 'black';
+            items[j + 1].style.backgroundColor = 'black';
+
+            await delay(200);
+
+            if (parseInt(items[j].getAttribute('value')) > parseInt(items[j + 1].getAttribute('value'))) {
+              swapItems(j, j + 1);
+              await delay(100);
+            }
+
+            items[j].style.backgroundColor = '';
+            items[j + 1].style.backgroundColor = '';
+          }
+        }
+
+        document.getElementById("selectionSortBtn").disabled = false;
+        document.getElementById("bubbleSortBtn").disabled = false;
+        document.getElementById("quickSortBtn").disabled = false;
+      }
+
+      sort();
+    }
+
+    function quickSort() {
+      document.getElementById("selectionSortBtn").disabled = true;
+      document.getElementById("bubbleSortBtn").disabled = true;
+      document.getElementById("quickSortBtn").disabled = true;
+
+      let list = document.getElementById('sortable-list');
+      let items = Array.from(list.getElementsByTagName('li'));
+
+      function swapItems(index1, index2) {
+        let temp = items[index1].outerHTML;
+        items[index1].outerHTML = items[index2].outerHTML;
+        items[index2].outerHTML = temp;
+        items = Array.from(list.getElementsByTagName('li'));
+      }
+
+      function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function partition(low, high) {
+        let pivot = parseInt(items[high].getAttribute('value'));
+        items[high].style.backgroundColor = 'navy';
+        let i = low - 1;
+        for (let j = low; j <= high - 1; j++) {
+          items[j].style.backgroundColor = 'black';
+          await delay(200);
+          if (parseInt(items[j].getAttribute('value')) < pivot) {
+            i++;
+            swapItems(i, j);
+            await delay(200);
+            items[i].style.backgroundColor = '';
+          }
+          items[j].style.backgroundColor = '';
+        }
+        swapItems(i + 1, high);
+        await delay(200);
+        items[high].style.backgroundColor = '';
+        items[i + 1].style.backgroundColor = '';
+        return (i + 1);
+      }
+
+      async function quickSortRecursive(low, high) {
+        if (low < high) {
+          let pi = await partition(low, high);
+          await Promise.all([quickSortRecursive(low, pi - 1), quickSortRecursive(pi + 1, high)]);
+        }
+      }
+
+      quickSortRecursive(0, items.length - 1).then(() => {
+        document.getElementById("selectionSortBtn").disabled = false;
+        document.getElementById("bubbleSortBtn").disabled = false;
+        document.getElementById("quickSortBtn").disabled = false;
+      });
+
+      let el = document.getElementById('sortable-list');
+      let sortable = Sortable.create(el);
+    }
   </script>
 </body>
 
