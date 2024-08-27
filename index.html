@@ -180,6 +180,7 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
               <h1 class="tabTitle">Study Algorithms</h1>
               <h1 class="tabTitle2">"Collect Spells"</h1>
+              <p class="">Drag and drop to reorganize and click the button to observe the algorithm in action!</p>
               <ul id="sortable-list">
                 <li id="li1" value=10>10</li>
                 <li id="li2" value=20>20</li>
@@ -233,7 +234,35 @@
       }
     }, delay);
 
+    function disableDrag() {
+      document.getElementById("li1").setAttribute('draggable', false);
+      document.getElementById("li2").setAttribute('draggable', false);
+      document.getElementById("li3").setAttribute('draggable', false);
+      document.getElementById("li4").setAttribute('draggable', false);
+      document.getElementById("li5").setAttribute('draggable', false);
+      document.getElementById("li6").setAttribute('draggable', false);
+      document.getElementById("li7").setAttribute('draggable', false);
+      document.getElementById("li8").setAttribute('draggable', false);
+      document.getElementById("li9").setAttribute('draggable', false);
+      document.getElementById("li10").setAttribute('draggable', false);
+    }
+
+    function enableDrag() {
+      document.getElementById("li1").setAttribute('draggable', true);
+      document.getElementById("li2").setAttribute('draggable', true);
+      document.getElementById("li3").setAttribute('draggable', true);
+      document.getElementById("li4").setAttribute('draggable', true);
+      document.getElementById("li5").setAttribute('draggable', true);
+      document.getElementById("li6").setAttribute('draggable', true);
+      document.getElementById("li7").setAttribute('draggable', true);
+      document.getElementById("li8").setAttribute('draggable', true);
+      document.getElementById("li9").setAttribute('draggable', true);
+      document.getElementById("li10").setAttribute('draggable', true);
+    }
+
+
     function selectionSort() {
+      sortable.option('disabled', true);
       let list = document.getElementById('sortable-list');
       let items = Array.from(list.getElementsByTagName('li'));
       let length = items.length;
@@ -250,6 +279,7 @@
       }
 
       async function sort() {
+        disableDrag();
         document.getElementById("selectionSortBtn").disabled = true;
         document.getElementById("bubbleSortBtn").disabled = true;
         document.getElementById("quickSortBtn").disabled = true;
@@ -282,6 +312,8 @@
         document.getElementById("selectionSortBtn").disabled = false;
         document.getElementById("bubbleSortBtn").disabled = false;
         document.getElementById("quickSortBtn").disabled = false;
+        enableDrag();
+        sortable.option('disabled', false);
       }
 
       sort();
@@ -290,6 +322,7 @@
 
 
     function bubbleSort() {
+      sortable.option('disabled', true);
       let list = document.getElementById('sortable-list');
       let items = Array.from(list.getElementsByTagName('li'));
       let length = items.length;
@@ -306,6 +339,7 @@
       }
 
       async function sort() {
+        disableDrag();
         document.getElementById("selectionSortBtn").disabled = true;
         document.getElementById("bubbleSortBtn").disabled = true;
         document.getElementById("quickSortBtn").disabled = true;
@@ -330,12 +364,16 @@
         document.getElementById("selectionSortBtn").disabled = false;
         document.getElementById("bubbleSortBtn").disabled = false;
         document.getElementById("quickSortBtn").disabled = false;
+        enableDrag();
+        sortable.option('disabled', false);
       }
 
       sort();
     }
 
     function quickSort() {
+      sortable.option('disabled', true);
+      disableDrag();
       document.getElementById("selectionSortBtn").disabled = true;
       document.getElementById("bubbleSortBtn").disabled = true;
       document.getElementById("quickSortBtn").disabled = true;
@@ -384,14 +422,18 @@
       }
 
       quickSortRecursive(0, items.length - 1).then(() => {
+        sortable.option('disabled', false);
+        enableDrag();
         document.getElementById("selectionSortBtn").disabled = false;
         document.getElementById("bubbleSortBtn").disabled = false;
         document.getElementById("quickSortBtn").disabled = false;
       });
 
     }
+
     let el = document.getElementById('sortable-list');
     let sortable = Sortable.create(el);
+
 
     function joinBtn() {
       window.location.href = 'https://forms.gle/mpujYyWuUM29KxRaA';
